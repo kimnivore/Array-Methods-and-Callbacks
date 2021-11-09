@@ -11,11 +11,6 @@ console.log(finals2014);
 
 //(a) Home Team name for 2014 world cup final (look at year and stage)
 console.log('Task 1a', finals2014[0]['Home Team Name']);
-// fifaData.forEach(function(item){
-//     console.log(item[Home Team Name]);
-// })
-// console.log(item[Home Team Name])
-
 //(b) Away Team name for 2014 world cup final
 console.log('Task 1b', finals2014[0]['Away Team Name']);
 //(c) Home Team goals for 2014 world cup final
@@ -34,13 +29,23 @@ hint - you should be looking at the stage key inside of the objects
 */
 // receive an array as the parameter - note this will be fifaData when you pass in the arguments
 // use filter
-function getFinals(/* code here */) {
+
+function getFinals(array) {
    /* code here */
-//use filter and Stage === 'Final'
+//use filter and Stage === 'Final'//
 
+// arrow syntax: 
+// const finalStage = array.filter(item => item['Stage'] === 'Final');
+// return finalStage;
+// }
+// console.log('Task 2', getFinals(fifaData));
+
+const finalStage = array.filter(function(item){
+    return item.Stage === 'Final';
+});
+return finalStage;
 }
-
-
+console.log('Task 2', getFinals(fifaData));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function called getYears to do the following: 
@@ -50,13 +55,23 @@ Use the higher-order function called getYears to do the following:
 // 2 parameters: array and getFinalscb
 //similar to bigpops
 
-function getYears(/* code here */) {
+function getYears(array, getFinalscb) {
     /* code here */
-
     //use map over the results of getFinals to get all the years
+   
+//     //arrow syntax
+//     const allYears = getFinalscb(array).map (item => item.Year);
+//     return allYears;
+// }
+// console.log('Task 3', getYears(fifaData, getFinals));
+   
+   
+    const allYears = getFinalscb(array).map(function(item){
+        return item.Year;
+    });
+    return allYears;
 }
-
-
+console.log('Task 3', getYears(fifaData, getFinals));
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher-order function getWinners to do the following:  
@@ -66,11 +81,21 @@ Use the higher-order function getWinners to do the following:
 4. Returns the names of all winning countries in an array called `winners` */ 
 //2 parameters: array and getFinalscb
 //just look at goals. whoever has more won.
-function getWinners(/* code here */) {
+function getWinners(array, getFinalscb) {
     /* code here */
-
     //use map 
     //use a conditional if hometeam goals > away team goals, then we want the hometeam name, else we want the away team name
+
+    const winners = getFinalscb(array).map(function(item){
+        if ("Home Team Goals" > "Away Team Goals") {
+            return "Home Team Name"; 
+        } else {
+            return "Away Team Name";
+        }
+        return winners;
+    });
+    
+    console.log('Task 4', getWinners(fifaData, getFinals));
 
 }
 
