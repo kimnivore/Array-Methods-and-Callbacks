@@ -141,13 +141,13 @@ function getAverageGoals(getFinalscb){
  // then i would divide that number by the length of the array.
  //round to 2 decimal places **hint - look up toFixed
  
-//  const averageGoals = getFinalscb.reduce(function(acc, item){
-//      return acc + item["Home Team Goals"] + item["Away Team Goals"];
-//  }, 0)
-// return (averageGoals / getFinalscb.length).toFixed(2);
+const averageGoals = getFinalscb.reduce(function(acc, item){
+      return acc + item["Home Team Goals"] + item["Away Team Goals"];
+  }, 0);
+ return (averageGoals / getFinalscb.length).toFixed(2);
 }
 
-// console.log('Task 6', getAverageGoals(getFinals));
+console.log('Task 6', getAverageGoals(getFinals(fifaData)));
 
 
 /// 🥅 STRETCH 🥅 ///
